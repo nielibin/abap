@@ -1,0 +1,24 @@
+DATA: wa_mara TYPE mara,
+      it_mara TYPE TABLE OF mara.
+
+*1. 先頭の1件のみ取得
+SELECT * FROM mara UP TO 1 ROWS
+  INTO wa_mara.
+ENDSELECT.
+
+*2. 先頭の1件のみ取得
+SELECT SINGLE * FROM mara
+  INTO wa_mara.
+
+*3. 1件ずつ処理しつつ全件取得
+SELECT * FROM mara INTO wa_mara.
+  "何か処理を入れる場合
+  "IF XXXXXXX
+ENDSELECT.
+
+*4. 一度に全件取得
+SELECT * FROM mara INTO TABLE it_mara.
+
+*5. 複数項目の取得
+SELECT SINGLE matnr mtart FROM mara
+  INTO (wa_mara-matnr,wa_mara-mtart).
